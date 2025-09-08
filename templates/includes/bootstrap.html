@@ -1,0 +1,6 @@
+
+{% if BOOTSTRAP_THEME %}
+<link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/themes/{{ BOOTSTRAP_THEME }}/bootstrap.min.css" rel="stylesheet">
+{% else %}
+<link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.min.css" rel="stylesheet">
+{% endif %}
