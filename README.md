@@ -147,7 +147,8 @@ wish to enable it, set the `DISPLAY_CATEGORY_IN_BREADCRUMBS` flag to _True_.
 
 ### Navbar
 
-If you wish to use the inverse navbar from Bootstrap, set the flag `BOOTSTRAP_NAVBAR_INVERSE` to _True_.
+If you wish to use the inverse navbar from Bootstrap, set the flag `BOOTSTRAP_NAVBAR_INVERSE` to one of the scheme colours such as `primary`,
+`secondary`, `info`, `success`, etc.
 
 ### Related Posts
 
