@@ -23,6 +23,9 @@
                 {% for p in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
                     {% if p.url %}
                      <li class="nav-item {% if p == page %}active{% endif %}"><a href="{{ SITEURL }}/{{ p.url }}" class="nav-link">
+                        {% if p.fa_icon is defined %}
+                        <i class="far fa-{{ p.fa_icon }}"></i>
+                        {% endif %}
                          {{ p.menulabel|default(p.title) }}
                       </a></li>
                     {% endif %}
