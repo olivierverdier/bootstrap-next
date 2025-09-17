@@ -1,6 +1,6 @@
 # bootstrap-next
 
-This is a Bootstrap 4 theme for Pelican, based on [pelican-bootstrap3](https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3), originally developed by [DandyDev](https://github.com/DandyDev). It's fully responsive and contains sub-themes from the Bootswatch project. Bootstrap-next is compatible with Pelican 3.3.0 and higher.
+This is a Bootstrap 5 theme for Pelican, based on [bootstrap-next](https://github.com/shvchk/bootstrap-next.git), itself based on [pelican-bootstrap3](https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3), originally developed by [DandyDev](https://github.com/DandyDev). It's fully responsive and contains sub-themes from the Bootswatch project. Bootstrap-next is compatible with Pelican 4.
 
 ## CONTRIBUTING
 
@@ -33,7 +33,20 @@ possibility is an up to date version of the
 plugin:
 
 `PLUGIN_PATHS = ['/path/to/git/pelican-plugins']`
-`PLUGINS = ['i18n_subsites']`
+`PLUGINS = ['i18n_subsites']**
+
+**Important**
+Add this at the end of your `pelicanconf.py` file:
+```python
+import requests, hashlib, base64
+def compute_sri(url: str) -> str:
+    data = requests.get(url, timeout=20).content
+    return "sha384-" + base64.b64encode(hashlib.sha384(data).digest()).decode()
+
+BOOTSTRAP_CDN_URL = f"https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.8/{BOOTSTRAP_THEME}/bootstrap.min.css"
+BOOTSTRAP_CDN_INTEGRITY = compute_sri(BOOTSTRAP_CDN_URL)
+```
+
 
 ## Usage
 
@@ -60,7 +73,7 @@ control the amount of tags shown with: `TAG_CLOUD_MAX_ITEMS`
 
 ### Bootswatch and other Bootstrap themes
 
-Part of the versatility of this theme comes from the fact that I included all the lovely Bootstrap themes from [Bootswatch](https://bootswatch.com/4-alpha), built by [Thomas Park](https://github.com/thomaspark). You can tell Pelican what Bootswatch theme to use, by setting `BOOTSTRAP_THEME` to the desired theme, in lowercase (ie. 'readable' or 'cosmo' etc.). My own site is using _Simplex_. If you want to use any other Bootstrap compatible theme, just put the `bootstrap.min.css` in the `static/css/themes/{theme-name}`. Then update the `BOOTSTRAP_THEME` variable with the _theme-name_ used.
+Part of the versatility of this theme comes from the fact that I included all the lovely Bootstrap themes from [Bootswatch](https://bootswatch.com), built by [Thomas Park](https://github.com/thomaspark). You can tell Pelican what Bootswatch theme to use, by setting `BOOTSTRAP_THEME` to the desired theme, in lowercase (ie. 'readable' or 'cosmo' etc.). 
 
 ### Article info
 

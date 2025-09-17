@@ -1,17 +1,18 @@
 
 <nav class="navbar navbar-expand-md {% if BOOTSTRAP_NAVBAR_INVERSE %}navbar-dark bg-{{ BOOTSTRAP_NAVBAR_INVERSE }}{% else %}navbar-light bg-light{% endif %} fixed-top" role="navigation">
+    <div class="container-fluid" >
     {% if MENUITEMS or (pages and DISPLAY_PAGES_ON_MENU) or (categories and DISPLAY_CATEGORIES_ON_MENU) %}
-    <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target=".navbar-main-collapse" aria-label="Toggle navigation">
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
     </button>
     {% endif %}
     {% if SITELOGO or not HIDE_SITENAME %}
-    <a href="{{ SITEURL }}/" class="navbar-brand">
-        {% if SITELOGO %}<img class="img-fluid float-left gap-right" src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}"/> {% endif %}
+    <a href="{{ SITEURL }}/" class="navbar-brand d-flex align-items-center">
+        {% if SITELOGO %}<img class="img-fluid float-start me-2" src="{{ SITELOGO }}" alt="site logo" width="{{ SITELOGO_SIZE }}"/> {% endif %}
         {% if not HIDE_SITENAME %}{{ SITENAME }}{% endif %}
     </a>
     {% endif %}
-    <div class="collapse navbar-collapse navbar-main-collapse">
+    <div id="main-navbar" class="collapse navbar-collapse">
         <ul class="navbar-nav">
             {% for title, link in MENUITEMS %}
                 <li class="nav-item"><a href="{{ link }}" class="nav-link">{{ title }}</a></li>
@@ -22,7 +23,7 @@
             {% if DISPLAY_PAGES_ON_MENU %}
                 {% for p in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
                     {% if p.url %}
-                     <li class="nav-item {% if p == page %}active{% endif %}"><a href="{{ SITEURL }}/{{ p.url }}" class="nav-link">
+                     <li class="nav-item {% if p == page %}active{% endif %}"><a href="{{ SITEURL }}/{{ p.url }}" class="nav-link" {% if p == page %}aria-current="page"{% endif %}>
                         {% if p.fa_icon is defined %}
                         <i class="far fa-{{ p.fa_icon }}"></i>
                         {% endif %}
@@ -39,12 +40,12 @@
                 {% endfor %}
             {% endif %}
         </ul>
-        <ul class="navbar-nav navbar-right">
-        {% if 'tipue_search' in PLUGINS %}
-          <li class="nav-item"><span>
-            <form class="navbar-search" action="{{ SEARCH_URL | default('/search.html') }}">
-              <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
-            </form></span>
+        <ul class="navbar-nav ms-auto">
+        {% if 'search' in PLUGINS %}
+          <li class="nav-item">
+            <form class="d-flex" action="{{ SEARCH_URL | default('/search.html') }}">
+              <input type="text" class="form-control me-2" placeholder="Search" name="q" id="tipue_search_input" required>
+            </form>
           </li>
         {% endif %}
         {% if ARCHIVES_SAVE_AS %}
@@ -53,4 +54,5 @@
         </ul>
     </div>
     <!-- /.navbar-collapse -->
+    </div>
 </nav> <!-- /.navbar -->

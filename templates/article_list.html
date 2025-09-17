@@ -7,8 +7,8 @@
                     <time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
                     <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
                     {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
-                        <div class="card">
-                            <div class="card-block">
+                        <div class="card border-light">
+                            <div class="card-body">
                                 {% include "includes/article_info.html" %}
                             </div>
                         </div>
@@ -16,7 +16,7 @@
                     <div class="summary">{{ article.summary }}
                         {% include 'includes/comment_count.html' %}
                         <div class="clearfix">
-                            <a class="btn btn-secondary btn-md float-right" href="{{ SITEURL }}/{{ article.url }}">{{ _('more') }}…</a>
+                            <a class="btn btn-dark btn-md float-end" href="{{ SITEURL }}/{{ article.url }}"><i class="fa fa-arrow-right"></i> {{ _('Read more') }}…</a>
                         </div>
                     </div>
                 </article>
