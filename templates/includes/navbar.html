@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-md {% if BOOTSTRAP_NAVBAR_INVERSE %}navbar-dark bg-{{ BOOTSTRAP_NAVBAR_INVERSE }}{% else %}navbar-light bg-light{% endif %} fixed-top" role="navigation">
     {% if MENUITEMS or (pages and DISPLAY_PAGES_ON_MENU) or (categories and DISPLAY_CATEGORIES_ON_MENU) %}
     <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target=".navbar-main-collapse" aria-label="Toggle navigation">
-        <i class="icon-menu"></i>
+        <i class="fas fa-bars"></i>
     </button>
     {% endif %}
     {% if SITELOGO or not HIDE_SITENAME %}
@@ -45,7 +45,7 @@
           </li>
         {% endif %}
         {% if ARCHIVES_SAVE_AS %}
-          <li class="nav-item"><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}" class="nav-link"><i class="icon-list"></i><span class="icon-label">{{ _('Archives') }}</span></a></li>
+          <li class="nav-item"><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}" class="nav-link"><i class="fas fa-list"></i><span class="icon-label">{{ _('Archives') }}</span></a></li>
         {% endif %}
         </ul>
     </div>
